@@ -28,6 +28,7 @@ Contact Support:
   * [`terminal.dataManagement.listSyncHistory`](#terminaldatamanagementlistsynchistory)
   * [`terminal.dataManagement.makePassthroughRequest`](#terminaldatamanagementmakepassthroughrequest)
   * [`terminal.dataManagement.requestSyncManual`](#terminaldatamanagementrequestsyncmanual)
+  * [`terminal.devices.getAllDevices`](#terminaldevicesgetalldevices)
   * [`terminal.drivers.getDetails`](#terminaldriversgetdetails)
   * [`terminal.drivers.list`](#terminaldriverslist)
   * [`terminal.groups.getAllGroups`](#terminalgroupsgetallgroups)
@@ -115,7 +116,7 @@ For most use cases we recommend using the [Link UI](./rhuaxk9205cn8-link-compone
 const createCustomConnectionResponse =
   await terminal.connections.createCustomConnection({
     tags: ["Tag Name", "Tag Name"],
-    externalId: "ullamco dolore ipsum",
+    externalId: "quis proident",
     provider: "geotab",
     syncMode: "automatic",
   });
@@ -185,7 +186,7 @@ const listAllResponse = await terminal.connections.listAll({
   limit: "1",
   externalId: "123",
   dotNumber: "123",
-  tag: "tempor in aliqua",
+  tag: "qui tempor",
 });
 ```
 
@@ -226,9 +227,9 @@ Update the details of the current active connection. The current connection is d
 const updateCurrentConnectionDetailsResponse =
   await terminal.connections.updateCurrentConnectionDetails({
     connectionToken: "{{connectionToken}}",
-    tags: ["dolor in magna", "reprehenderit dolor nostrud"],
-    externalId: "ad sed dolore cupidatat",
-    status: "laborum sed consectetur",
+    tags: ["esse sit veniam et", "sunt u"],
+    externalId: "eu cillum",
+    status: "incididunt reprehenderit sunt",
     syncMode: "automatic",
   });
 ```
@@ -411,6 +412,58 @@ const requestSyncManualResponse =
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/syncs` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `terminal.devices.getAllDevices`<a id="terminaldevicesgetalldevices"></a>
+
+List all devices in the connected account.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const getAllDevicesResponse = await terminal.devices.getAllDevices({
+  cursor: "{{nextCursor}}",
+  limit: "1",
+  modifiedAfter: "2021-01-06T03:24:53.000Z",
+  modifiedBefore: "2021-01-06T03:24:53.000Z",
+  raw: "true",
+  connectionToken: "{{connectionToken}}",
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### cursor: `string`<a id="cursor-string"></a>
+
+Pagination cursor to start requests from
+
+##### limit: `string`<a id="limit-string"></a>
+
+The maximum number of results to return in a page.
+
+##### modifiedAfter: `string`<a id="modifiedafter-string"></a>
+
+Only include records that were last modified after a provided date.
+
+##### modifiedBefore: `string`<a id="modifiedbefore-string"></a>
+
+Only include records that were last modified before a provided date.
+
+##### raw: `string`<a id="raw-string"></a>
+
+Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified.
+
+##### connectionToken: `string`<a id="connectiontoken-string"></a>
+
+(Required) The token returned when a user authenticated their account. This authorizes access to a specific account.
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/devices` `GET`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
@@ -636,8 +689,8 @@ List daily summary of hours of service. Each daily log represents the time a dri
 const getDailyLogsResponse = await terminal.hoursOfService.getDailyLogs({
   cursor: "{{nextCursor}}",
   limit: "1",
-  startDate: "1995-04-25",
-  endDate: "1995-04-25",
+  startDate: "2013-12-08",
+  endDate: "2013-12-08",
   modifiedAfter: "2021-01-06T03:24:53.000Z",
   modifiedBefore: "2021-01-06T03:24:53.000Z",
   driverIds: "{{driverId}}",
@@ -843,11 +896,11 @@ For example, if we lack permissions for a specific resource or need to skip an i
 const listObservedEventsResponse = await terminal.issues.listObservedEvents({
   limit: "1",
   cursor: "{{nextCursor}}",
-  lastReportedAfter: "2023-06-07",
-  lastReportedBefore: "2023-06-07",
+  lastReportedAfter: "1973-09-17",
+  lastReportedBefore: "1973-09-17",
   expand: "",
   connectionId: "conn_01GV12VR4DJP70GD1ZBK0SDWFH",
-  errorCode: "invalid_source_id",
+  errorCode: "exceeded_retention_window",
   status: "ongoing",
 });
 ```

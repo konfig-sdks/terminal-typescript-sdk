@@ -116,11 +116,10 @@ export const IssuesApiAxiosParamCreator = function (configuration?: Configuratio
          * Mark an issue\'s status as `resolved` until the issue is observed again.
          * @summary Resolve Issue
          * @param {string} issueId (Required) 
-         * @param {object} [body] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        markResolved: async (issueId: string, body?: object, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        markResolved: async (issueId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'issueId' is not null or undefined
             assertParamExists('markResolved', 'issueId', issueId)
             const localVarPath = `/issues/{issueId}/resolve`
@@ -141,13 +140,9 @@ export const IssuesApiAxiosParamCreator = function (configuration?: Configuratio
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
     
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             requestBeforeHook({
-                requestBody: body,
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
@@ -155,7 +150,6 @@ export const IssuesApiAxiosParamCreator = function (configuration?: Configuratio
                 pathTemplate: '/issues/{issueId}/resolve',
                 httpMethod: 'POST'
             });
-            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             return {
@@ -192,9 +186,7 @@ export const IssuesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async markResolved(requestParameters: IssuesApiMarkResolvedRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const body: object = {
-            };
-            const localVarAxiosArgs = await localVarAxiosParamCreator.markResolved(requestParameters.issueId, body, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.markResolved(requestParameters.issueId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -309,7 +301,7 @@ export type IssuesApiMarkResolvedRequest = {
     */
     readonly issueId: string
     
-} & object
+}
 
 /**
  * IssuesApiGenerated - object-oriented interface

@@ -146,6 +146,28 @@ export const operationParameterMap: Record<string, Entry> = {
             },
         ]
     },
+    '/devices-GET': {
+        parameters: [
+            {
+                name: 'cursor'
+            },
+            {
+                name: 'limit'
+            },
+            {
+                name: 'modifiedAfter'
+            },
+            {
+                name: 'modifiedBefore'
+            },
+            {
+                name: 'raw'
+            },
+            {
+                name: 'connection-token'
+            },
+        ]
+    },
     '/drivers/{id}-GET': {
         parameters: [
             {

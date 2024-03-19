@@ -18,6 +18,7 @@ import {
   AuthenticationApi,
   ConnectionsApi,
   DataManagementApi,
+  DevicesApi,
   DriversApi,
   GroupsApi,
   HoursOfServiceApi,
@@ -36,6 +37,7 @@ export class Terminal extends TerminalCustom {
   readonly authentication: AuthenticationApi;
   readonly connections: ConnectionsApi;
   readonly dataManagement: DataManagementApi;
+  readonly devices: DevicesApi;
   readonly drivers: DriversApi;
   readonly groups: GroupsApi;
   readonly hoursOfService: HoursOfServiceApi;
@@ -53,6 +55,7 @@ export class Terminal extends TerminalCustom {
     this.authentication = new AuthenticationApi(configuration);
     this.connections = new ConnectionsApi(configuration);
     this.dataManagement = new DataManagementApi(configuration);
+    this.devices = new DevicesApi(configuration);
     this.drivers = new DriversApi(configuration);
     this.groups = new GroupsApi(configuration);
     this.hoursOfService = new HoursOfServiceApi(configuration);
